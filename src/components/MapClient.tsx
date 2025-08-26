@@ -112,12 +112,12 @@ function Tooltip({
 
   const pos =
     side === "top"
-      ? "-top-8 left-1/2 -translate-x-1/2"
+      ? "-top-8 left-1/2 -translate-x-1/2 max-w-[80vw]"
       : side === "bottom"
-      ? "top-8 left-1/2 -translate-x-1/2"
+      ? "top-8 left-1/2 -translate-x-1/2 max-w-[80vw]"
       : side === "left"
-      ? "top-1/2 -translate-y-1/2 -left-2 -translate-x-full"
-      : "top-1/2 -translate-y-1/2 -right-2 translate-x-full";
+      ? "top-1/2 -translate-y-1/2 -left-2 -translate-x-full max-w-[70vw]"
+      : "top-1/2 -translate-y-1/2 -right-2 translate-x-full max-w-[70vw]";
 
   return (
     <span
@@ -692,9 +692,9 @@ export default function MapClient() {
       </div>
 
       {/* TOP BAR */}
-      <div className="absolute z-[1000] left-1/2 -translate-x-1/2 mt-4 w-[98vw] max-w-[1200px]">
+      <div className="absolute z-[1000] left-1/2 -translate-x-1/2 mt-2 sm:mt-4 w-full max-w-[1200px] px-2 sm:px-0">
         <div className="rounded-xl backdrop-blur-md shadow-md bg-white/90 border border-black/15 text-black h-12 flex items-center">
-          <div className="flex items-center gap-2 flex-nowrap whitespace-nowrap overflow-x-auto no-scrollbar px-2 w-full">
+          <div className="flex items-center gap-2 flex-nowrap whitespace-nowrap overflow-x-auto no-scrollbar px-2 w-full min-w-0">
             {/* location input */}
             <div className="relative shrink-0">
               <FrostInput
@@ -926,7 +926,7 @@ export default function MapClient() {
 
 function PopupBody({ p, dens, sample }: { p: Place; dens: LegendLevel; sample: number }) {
   return (
-    <div className="space-y-1">
+    <div className="space-y-1 max-w-[240px] sm:max-w-[300px] break-words">
       <div className="text-sm font-semibold text-black">{p.name ?? "Unknown place"}</div>
       {p.location?.formatted_address && <div className="text-[11px] text-gray-600">{p.location.formatted_address}</div>}
       <div className="text-xs text-black">
